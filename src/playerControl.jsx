@@ -23,7 +23,7 @@ function PlayerControl({width, songs, setisPlaying, isPlaying, currentSong, setC
         const duration = audioElem.current.duration
         const ct = audioElem.current.currentTime
 
-        setCurrentSong({...currentSong, progress: ct / duration * 100})
+        setCurrentSong({...currentSong, progress: ct / duration * 100, length: duration})
     }
 
     function nextTrack(){
@@ -42,7 +42,6 @@ function PlayerControl({width, songs, setisPlaying, isPlaying, currentSong, setC
         }else{
             setCurrentSong(songs[index-1])
         }
-        audioElem.current.currentTime = 0
     }
 
     function songEnded(){
@@ -74,7 +73,7 @@ function PlayerControl({width, songs, setisPlaying, isPlaying, currentSong, setC
                         <i className="text-white text-2xl" onClick={nextTrack}><FaForward /></i>
                         <img src="repeate-one.png"/>
                     </div>
-                    <PlayerLength currentSong={currentSong} isPlaying={isPlaying} onPlaying={onPlaying}/>
+                    <PlayerLength currentSong={currentSong} isPlaying={isPlaying} onPlaying={onPlaying} audioElem={audioElem}/>
                 </div>
                 <div className="flex items-center">
                     <img src="volume-high.png" className="mr-4"/>
