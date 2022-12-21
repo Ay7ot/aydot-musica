@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 
-function PlayerLength({currentSong, isPlaying, onPlaying}) {
+function PlayerLength({currentSong }) {
     const [playerValue, setPlayerValue] = useState(0)
 
     console.log(currentSong.progress, playerValue)
@@ -21,7 +21,7 @@ function PlayerLength({currentSong, isPlaying, onPlaying}) {
             type='range'
             min='0'
             max='100'
-            step='1'
+            step='0.5'
             value={playerValue}
             onChange={(e)=>setPlayerValue(e.target.valueAsNumber)}
             style={getBackgroundSize()}
