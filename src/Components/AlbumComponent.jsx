@@ -6,7 +6,7 @@ const AlbumComponent = ({ playlist, width, setSongs, setCurrentSong, isPlaying, 
 
     function playSong(id){
         setSongs(playlist.files)
-        setisPlaying(!isPlaying)
+        setisPlaying(true)
         setCurrentSong(playlist.files.find(item=>{
             if(id === item.id){
                 return item.audio
