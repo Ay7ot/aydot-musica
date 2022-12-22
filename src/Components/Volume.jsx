@@ -14,7 +14,7 @@ function VolumeSlider() {
             min='0'
             max='1'
             step="0.01"
-            className="appearance-none bg-gray rounded-lg bg bg-gradient-to-r from-yellow to-yellow h-1 cursor-pointer slider-thumb bg-no-repeat"
+            className="appearance-none bg-gray rounded-lg bg bg-gradient-to-r from-yellow to-yellow h-1 cursor-pointer slider-thumb bg-no-repeat w-full"
             value={value}
             onChange={(e)=>setValue(e.target.valueAsNumber)}
             style={getBackgroundSize()}

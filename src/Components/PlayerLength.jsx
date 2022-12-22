@@ -21,7 +21,6 @@ function PlayerLength({ currentSong, audioElem }) {
 
         const newProgress = offset / width * 100;
         audioElem.current.currentTime = newProgress / 100 * currentSong.length
-        console.log(width, offset)
     }
 
     return (  
@@ -35,7 +34,7 @@ function PlayerLength({ currentSong, audioElem }) {
             onChange={(e)=>setPlayerValue(e.target.valueAsNumber)}
             style={getBackgroundSize()}
             onClick={changePosition}
-            className="appearance-none bg-gray rounded-lg bg bg-gradient-to-r w-[500px] xl:w-[600px] from-yellow to-yellow h-1 cursor-pointer slide-thumb-player bg-no-repeat"
+            className="appearance-none bg-gray rounded-lg bg bg-gradient-to-r w-full md:w-[500px] xl:w-[600px] from-yellow to-yellow h-1 cursor-pointer slide-thumb-player bg-no-repeat"
         />
     );
 }
