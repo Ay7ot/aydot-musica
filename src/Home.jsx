@@ -6,7 +6,7 @@ import HomeHeader from "./Components/HomeHeader/HomeHeader";
 import HomeRelease from "./Components/HomeBody/HomeRelease";
 import HomeCategories from "./Components/HomeBody/HomeCategories";
 
-function Home({ isToggled, handleToggle, width }) {
+function Home({ isToggled, handleToggle, width, token, spotifyApi }) {
 
     return (  
         <>
@@ -16,10 +16,10 @@ function Home({ isToggled, handleToggle, width }) {
             <div className={isToggled ? 'hidden' : ''}>
                 <div className={isToggled ? "hidden" : "bg-background font-serif w-screen relative pt-[1.5rem] px-[1rem] min-h-screen scroll-smooth"}>
                     {width < 1024 ? <NavMobile isToggled={isToggled} handleToggle={handleToggle}/> : <Navbar />}
-                    <HomeHeader width={width}/>
+                    <HomeHeader width={width} token={token} spotifyApi={spotifyApi}/>
                     <div className="lg:pl-24 xl:pr-10 2xl:pr-[6%] pb-[25%] sm:pb-[15%] lg:pb-[10%] 2xl:pb-[5%]">
-                        <HomeRelease />
-                        <HomeCategories />
+                        <HomeRelease token={token} spotifyApi={spotifyApi}/>
+                        <HomeCategories token={token} spotifyApi={spotifyApi} />
                     </div>
                 </div>
                 

@@ -4,17 +4,31 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
 
-function HomeHeader({ width }) {    
-    const [newAlbum, setNewAlbum] = useState([]);
+function HomeHeader({ width, token, spotifyApi }) { 
 
-    useEffect(()=>{
-        fetch('https://musica-api.up.railway.app/playlist')
-            .then((res)=>res.json())
-            .then((data)=>setNewAlbum(data.map(playlist=>{return {...playlist, isFavorite: false, playListLength: '2:10:00', heart1: 'Heart2.png', heart2: 'HeartFull.png'}})))
-    },[])
+
+    spotifyApi.setAccessToken(token);
+
+    const [playlists, setPlaylists] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        setLoading(true);
+        spotifyApi.getUserPlaylists()
+        .then(response => {
+            setPlaylists(response.items.map(item=>({...item, heart1: 'unlikedAlbum.png', heart2: 'LikedAlbum.png'})));
+            setLoading(false);
+        }).catch(error => {
+            setError(error);
+            setLoading(false);
+        });
+        
+    }, []);
+
 
     const settingsVertical = {
-        dots: true,
+        dots: false,
         infinite: true,
         slidesToShow: 3,
         slidesToScroll: 1,
@@ -38,9 +52,17 @@ function HomeHeader({ width }) {
     }
 
     function setFavorite(id){
-        setNewAlbum(prevAlbum=>prevAlbum.map(item=>{
+        setPlaylists(prevAlbum=>prevAlbum.map(item=>{
            return item.id===id ? {...item, isFavorite: !item.isFavorite} : {...item}
         }))
+    }
+
+    if (loading) {
+        return <p>Loading...</p>;
+    }
+
+    if (error) {
+        return <p>Error: {error.message}</p>;
     }
 
     return (  
@@ -71,22 +93,22 @@ function HomeHeader({ width }) {
                 : ''
             }>
                 <h2 className='text-gray-dark font-bold text-[1.2rem] mt-10 lg:text-[1.5rem]'>
-                    Top Charts
+                    Your Playlists
                 </h2>
                 {width >= 1024 
                     ?
                     <div>
                         <Slider {...settingsVertical}>
-                            {newAlbum.map(item=>{
+                            {playlists.map(item=>{
                                 return (
                                     <>
                                        <div className={`${item.isFavorite ? 'bg-gradient-to-l from-charcoal to-yellow' : 'bg-charcoal' } mt-4 rounded-2xl p-4 flex justify-between items-center`} key={item.id}>
                                             <Link to='/viewAlbum' state={item}>
                                                     <div className="flex">
-                                                        <img src={item.cover} className="h-[70px] rounded-lg"/>
+                                                        <img src={item.images[0].url} className="h-[70px] rounded-lg"/>
                                                         <div className="ml-2">
-                                                            <p className="text-sm text-white tracking-wide font-thin">{item.title}</p>
-                                                            <p className="text-[#808080] font-thin text-xs mt-2 tracking-wide">{item.title}</p>
+                                                            <p className="text-sm text-white tracking-wide font-thin">{item.name}</p>
+                                                            <p className="text-[#808080] font-thin text-xs mt-2 tracking-wide">{item.owner.display_name}</p>
                                                             <p className="text-white font-thin text-xs mt-2">{item.playListLength}</p>
                                                         </div>
                                                     </div>
@@ -102,15 +124,15 @@ function HomeHeader({ width }) {
                     </div>
                     : 
                     <Slider {...settingsHorizontal}>
-                        {newAlbum.map(item=>{
+                        {playlists.map(item=>{
                             return (
                                 <>
                                     <div className={`${item.isFavorite ? 'bg-gradient-to-l from-charcoal to-yellow' : 'bg-charcoal' } mt-4 rounded-2xl p-4 flex justify-between`} key={item.id}>
                                         <Link to='/viewAlbum' state={item}>
                                             <div>
-                                                <img src={item.cover} className='w-28 h-28 rounded-xl'/>
-                                                <p className="text-lg text-white tracking-wide font-thin mt-10">{item.title}</p>
-                                                <p className="text-[#808080] font-thin text-xs tracking-wide mt-2">{item.title}</p>
+                                                <img src={item.images[0].url} className='w-28 h-28 rounded-xl'/>
+                                                <p className="text-lg text-white tracking-wide font-thin mt-10">{item.name}</p>
+                                                <p className="text-[#808080] font-thin text-xs tracking-wide mt-2">{item.owner.display_name}</p>
                                                 <p className="text-white mt-6 font-thin">{item.playListLength}</p>
                                             </div>
                                         </Link>
