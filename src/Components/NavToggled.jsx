@@ -28,7 +28,7 @@ function NavToggled({isToggled, handleToggle}) {
 
     return (  
         <AnimationOnScroll className='animate__fadeInLeft'>
-            <nav className={isToggled ? "h-screen box-border bg-background font-serif pt-[1.5em] px-[1rem]" : "hidden"}>
+            <nav className={isToggled ? "h-screen box-border bg-background font-serif pt-[1.5em] px-[1rem] " : "hidden"}>
                 <i onClick={()=>handleToggle()} className="text-gray-dark text-[1.5em]"><FaArrowLeft /></i>
                 <ul className='mt-[3rem] pl-[2.5rem]'>
                     {icon.map((info)=>{

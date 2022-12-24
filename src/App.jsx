@@ -6,6 +6,7 @@ import PlayerMobilePage from './playerMobilePage'
 import {Routes, Route} from 'react-router-dom'
 import useWindowDimensions from './windowDimensions'
 import PlayerControl from './playerControl'
+import Login from './Login'
 
 
 function App() {
@@ -84,22 +85,23 @@ function App() {
       <Route path='/' 
         element={
         <>
-          <Home width={width} isToggled={isToggled} handleToggle={handleToggle}/>
-          <PlayerControl width={width} songs={songs} setisPlaying={setisPlaying} isPlaying={isPlaying} currentSong={currentSong} setCurrentSong={setCurrentSong} audioElem={audioElem} onPlaying={onPlaying} nextTrack={nextTrack} prevTrack={prevTrack} playPause={playPause}/>
+          <Login width={width} isToggled={isToggled} handleToggle={handleToggle}/>
+          {/* <Home width={width} isToggled={isToggled} handleToggle={handleToggle}/> */}
+          {!isToggled &&  <PlayerControl width={width} songs={songs} setisPlaying={setisPlaying} isPlaying={isPlaying} currentSong={currentSong} setCurrentSong={setCurrentSong} audioElem={audioElem} onPlaying={onPlaying} nextTrack={nextTrack} prevTrack={prevTrack} playPause={playPause}/>}
         </>
         }
       />
       <Route path='/collection' element={
         <>
           <Collection width={width} height={height} isToggled={isToggled} handleToggle={handleToggle}/>
-          <PlayerControl width={width} songs={songs} setisPlaying={setisPlaying} isPlaying={isPlaying} currentSong={currentSong} setCurrentSong={setCurrentSong} audioElem={audioElem} onPlaying={onPlaying} nextTrack={nextTrack} prevTrack={prevTrack} playPause={playPause}/>
+          {!isToggled &&  <PlayerControl width={width} songs={songs} setisPlaying={setisPlaying} isPlaying={isPlaying} currentSong={currentSong} setCurrentSong={setCurrentSong} audioElem={audioElem} onPlaying={onPlaying} nextTrack={nextTrack} prevTrack={prevTrack} playPause={playPause}/>}
         </>
         }
       />
       <Route path='/viewalbum' element={
         <>
           <ViewAlbum width={width} height={height} isToggled={isToggled} handleToggle={handleToggle} setCurrentSong={setCurrentSong} setSongs={setSongs} setisPlaying={setisPlaying} isPlaying={isPlaying}/>
-          <PlayerControl width={width} songs={songs} setisPlaying={setisPlaying} isPlaying={isPlaying} currentSong={currentSong} setCurrentSong={setCurrentSong} audioElem={audioElem} onPlaying={onPlaying} nextTrack={nextTrack} prevTrack={prevTrack} playPause={playPause}/>
+          {!isToggled &&  <PlayerControl width={width} songs={songs} setisPlaying={setisPlaying} isPlaying={isPlaying} currentSong={currentSong} setCurrentSong={setCurrentSong} audioElem={audioElem} onPlaying={onPlaying} nextTrack={nextTrack} prevTrack={prevTrack} playPause={playPause}/>}
         </>
         }
       />

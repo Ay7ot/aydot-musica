@@ -5,7 +5,6 @@ import NavToggled from './Components/NavToggled'
 import HomeHeader from "./Components/HomeHeader/HomeHeader";
 import HomeRelease from "./Components/HomeBody/HomeRelease";
 import HomeCategories from "./Components/HomeBody/HomeCategories";
-import PlayerControl from "./playerControl";
 
 function Home({ isToggled, handleToggle, width }) {
 
