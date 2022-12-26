@@ -122,14 +122,14 @@ function App() {
       />
       <Route path='/collection' element={
         <>
-          <Collection width={width} height={height} isToggled={isToggled} handleToggle={handleToggle}/>
+          <Collection width={width} height={height} isToggled={isToggled} handleToggle={handleToggle} logout={logout} />
           {!isToggled &&  <PlayerControl width={width} songs={songs} setisPlaying={setisPlaying} isPlaying={isPlaying} currentSong={currentSong} setCurrentSong={setCurrentSong} audioElem={audioElem} onPlaying={onPlaying} nextTrack={nextTrack} prevTrack={prevTrack} playPause={playPause}/>}
         </>
         }
       />
       <Route path='/viewalbum' element={
         <>
-          <ViewAlbum width={width} height={height} isToggled={isToggled} handleToggle={handleToggle} setCurrentSong={setCurrentSong} setSongs={setSongs} currentSong={currentSong} setisPlaying={setisPlaying} isPlaying={isPlaying} token={token} spotifyApi={spotifyApi} />
+          <ViewAlbum width={width} height={height} isToggled={isToggled} handleToggle={handleToggle} setCurrentSong={setCurrentSong} setSongs={setSongs} currentSong={currentSong} setisPlaying={setisPlaying} isPlaying={isPlaying} token={token} spotifyApi={spotifyApi} logout={logout} />
           {!isToggled &&  <PlayerControl width={width} songs={songs} setisPlaying={setisPlaying} isPlaying={isPlaying} currentSong={currentSong} setCurrentSong={setCurrentSong} audioElem={audioElem} onPlaying={onPlaying} nextTrack={nextTrack} prevTrack={prevTrack} playPause={playPause}/>}
         </>
         }

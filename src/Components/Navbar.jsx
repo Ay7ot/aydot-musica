@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 
-function Navbar() {
+function Navbar({logout}) {
+
     return (  
         <nav>
            <div className='flex justify-between items-center'>
@@ -43,7 +44,7 @@ function Navbar() {
                                 <img src='profile.png' />
                             </Link>
                         </li>
-                        <li>
+                        <li onClick={()=>logout('token')}>
                             <Link to='/'>
                                 <img src='logout.png' />
                             </Link>

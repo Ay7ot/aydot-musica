@@ -13,7 +13,7 @@ function HomeReleases({token, spotifyApi }) {
         setLoading(true);
         spotifyApi.getFeaturedPlaylists({
             country: 'NG',
-            limit: 20,
+            limit: 10,
             offset: 0
           })
         .then(response => {
