@@ -25,8 +25,6 @@ function HomeCategories({ token, spotifyApi }) {
         
     }, []);
 
-    console.log(forYou)
-
     
     if (loading) {
         return <p>Loading...</p>;
