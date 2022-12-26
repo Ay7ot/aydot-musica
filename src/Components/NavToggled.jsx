@@ -28,7 +28,7 @@ function NavToggled({isToggled, handleToggle, logout}) {
 
     function runLogout(name){
         if(name ==='Log Out'){
-            logout()
+            logout('token')
         }
     }
 
