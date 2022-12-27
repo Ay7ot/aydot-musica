@@ -58,11 +58,11 @@ function HomeHeader({ width, token, spotifyApi }) {
     }
 
     if (loading) {
-        return <p>Loading...</p>;
+        return <p className='text-yellow text-lg'>Loading...</p>;
     }
 
     if (error) {
-        return <p>Error: {error.message}</p>;
+        return <p className='text-yellow text-lg'>Error: {error.message}</p>;
     }
 
     return (  

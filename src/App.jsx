@@ -26,7 +26,7 @@ function App() {
   const [currentSong, setCurrentSong] = useState('')
 
   const CLIENT_ID = '2a702725bcae4235a6d7e3e6dd3005a2'
-  const REDIRECT_URI = 'https://aydot-musica.netlify.app'
+  const REDIRECT_URI = 'http://localhost:5173'
   const AUTH_ENDPOINT = 'https://accounts.spotify.com/authorize'
   const RESPONSE_TYPE = "token"
 

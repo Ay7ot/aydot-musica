@@ -32,17 +32,17 @@ const AlbumComponent = ({ playlist, width, setSongs, currentSong, setCurrentSong
     }, [playlist.id]);
 
     if (loading) {
-        return <p>Loading...</p>;
+        return <p className='text-yellow text-lg'>Loading...</p>;
     }
     
     if (error) {
-        return <p>Error: {error.message}</p>;
+        return <p className='text-yellow text-lg'>Error: {error.message}</p>;
     }
 
     return (
         <div className='mt-9 lg:mt-0 lg:left-[10%] lg:-top-[400px] lg:w-[85vw] mb-[90px] lg:mb-0'>
               <div className='lg:flex'>
-                <img src={playlist.images[0].url} className='rounded-xl h-[350px] w-full lg:max-w-[350px]'/>
+                <img src={playlist.images[0].url} className='rounded-xl h-[350px] w-full max-w-[350px]'/>
                 <div className='lg:ml-7 lg:mt-[80px]'>
                     <div className='lg:w-[500px]'>
                         <h2 className='text-[#A4C7C6] text-[32px] font-bold mt-6'>{playlist.name}</h2>
@@ -72,7 +72,7 @@ const AlbumComponent = ({ playlist, width, setSongs, currentSong, setCurrentSong
                         return (
                             <div className='flex items-center justify-between bg-[#2c2f31] p-2 rounded-xl mb-4' key={item.track.id} onClick={()=>playSong(item.track.id)}>
                                 <div className='flex items-center'>
-                                    <img src={item.track.album.images[0].url} className='w-[40px] rounded-lg'/>
+                                    <img src={item.track.album.images[0].url} className='w-[40px] h-[40px] rounded-lg'/>
                                     <img src='trackHeart.png' className='hidden lg:block ml-5'/>
                                 </div>
                                 <div className='w-[300px] 2xl:w-[500px] flex justify-between'>
@@ -93,7 +93,7 @@ const AlbumComponent = ({ playlist, width, setSongs, currentSong, setCurrentSong
                             <div className='flex items-center justify-between bg-[#2c2f31] p-2 rounded-xl mb-4' key={item.track.id} onClick={()=>playSong(item.track.id)}>
                                 <div className='flex items-center'>
                                     <div className='flex items-center'>
-                                        <img src={item.track.album.images[0].url} className='w-[40px] rounded-lg'/>
+                                        <img src={item.track.album.images[0].url} className='w-[40px] h-[40px] rounded-lg'/>
                                     </div>
                                     <div className='ml-3 flex flex-col'>
                                         <p className='text-sm text-white font-thin tracking-wide mb-[6px]'>{item.track.name}</p>

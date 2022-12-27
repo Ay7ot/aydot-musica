@@ -27,11 +27,11 @@ function HomeCategories({ token, spotifyApi }) {
 
     
     if (loading) {
-        return <p>Loading...</p>;
+        return <p className='text-yellow text-lg'>Loading...</p>;
     }
 
     if (error) {
-        return <p>Error: {error.message}</p>;
+        return <p className='text-yellow text-lg'>Error: {error.message}</p>;
     }
 
     return ( 
@@ -40,11 +40,13 @@ function HomeCategories({ token, spotifyApi }) {
                 <div className="overflow-x-scroll no-scrollbar grid grid-cols-10 gap-[170px] box-content sm:gap-[180px] md:gap-[200px] lg:gap-[220px] xl:gap-[250px] 2xl:gap-[10%] mt-4">
                     {forYou.items.map(category=>{
                         return (
-                            <div className="w-[150px] lg:w-[200px]" key={category.id}>
-                                <img src={category.images[0].url} className='rounded-xl w-full'/>
-                                <p className="text-white font-bold mt-2 tracking-wide">{category.name}</p>
-                                <p className="text-gray-dark text-sm">{category.owner.display_name}</p>
-                            </div>
+                            <Link to='/viewAlbum' state={category}>
+                                <div className="w-[150px] lg:w-[200px]" key={category.id}>
+                                    <img src={category.images[0].url} className='rounded-xl w-full'/>
+                                    <p className="text-white font-bold mt-2 tracking-wide">{category.name}</p>
+                                    <p className="text-gray-dark text-sm">{category.owner.display_name}</p>
+                                </div>
+                            </Link>
                         )
                     })}
                 </div>

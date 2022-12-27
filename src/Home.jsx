@@ -17,12 +17,11 @@ function Home({ isToggled, handleToggle, width, token, spotifyApi, logout }) {
                 <div className={isToggled ? "hidden" : "bg-background font-serif w-screen relative pt-[1.5rem] px-[1rem] min-h-screen scroll-smooth"}>
                     {width < 1024 ? <NavMobile isToggled={isToggled} handleToggle={handleToggle}/> : <Navbar logout={logout}/>}
                     <HomeHeader width={width} token={token} spotifyApi={spotifyApi}/>
-                    <div className="lg:pl-24 xl:pr-10 2xl:pr-[6%] pb-[25%] sm:pb-[15%] lg:pb-[10%] 2xl:pb-[5%]">
+                    <div className="lg:pl-24 xl:pr-10 2xl:pr-[6%] pb-[20%] md:pb-[15%] lg:pb-[10%] 2xl:pb-[5%]">
                         <HomeRelease token={token} spotifyApi={spotifyApi}/>
                         <HomeCategories token={token} spotifyApi={spotifyApi} />
                     </div>
-                </div>
-                
+                </div>               
             </div>
         </>
     );
