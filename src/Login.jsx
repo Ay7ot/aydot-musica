@@ -9,6 +9,7 @@ export default function Login({width, logout, isToggled, handleToggle, CLIENT_ID
     spotifyApi.setAccessToken(token)
 
     const [newTracks, setNewTracks] = useState([])
+    const [playingTrack, setPlayingTrack] = useState()
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const scope = 'streaming user-read-private user-read-email user-library-read user-library-modify user-modify-playback-state user-read-playback-state user-read-recently-played';
@@ -17,7 +18,7 @@ export default function Login({width, logout, isToggled, handleToggle, CLIENT_ID
         setLoading(true);
         spotifyApi.getMyRecentlyPlayedTracks()
         .then(response => {
-            // console.log(response)
+            // console.log(response.items[0])
             setNewTracks(response.items.map(item=>item.track.uri))
             setPlayingTrack(response.items[0].track.uri);
             setLoading(false);
@@ -28,7 +29,7 @@ export default function Login({width, logout, isToggled, handleToggle, CLIENT_ID
         
     }, [error]);
 
-    console.log(newTracks)
+    // console.log(newTracks)
     
     return (
         

@@ -19,6 +19,7 @@ export default function NewPlayer({token, trackuri}) {
             trackNameColor: '#EFEEE0'
           }}
           autoPlay={true}
+          // offset={50000}
         />
     </div>
   )
